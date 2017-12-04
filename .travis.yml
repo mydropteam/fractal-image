@@ -1,0 +1,14 @@
+services:
+  - docker
+
+env:
+  - VERSION=1.1.7
+
+before_script:
+  - env | sort
+  - cd "${VERSION}"
+
+script:
+  - travis_retry docker build -t test_image .
+  - docker run -d -p 127.0.0.1:3000:3000 --name test_container test_image
+  - docker ps | grep -q test_container
