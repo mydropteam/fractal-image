@@ -21,7 +21,3 @@ WORKDIR /opt/project
 
 # The project volume
 VOLUME /opt/project
-
-CMD ["gulp"]
-
-CMD [ "fractal", "start --sync" ]
