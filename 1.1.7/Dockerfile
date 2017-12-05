@@ -13,8 +13,11 @@ ENV PATH /opt/apt/fractal/node_modules/.bin:$PATH
 # Expose 3000 for the node.js server, 3002 for the BrowserSync
 EXPOSE 3000 3002
 
-# The application volume
-VOLUME /opt/app/fractal
+@ The project directory
+WORKDIR /opt/project
+
+# The project volume
+VOLUME /opt/project
 
 CMD ["gulp"]
 
