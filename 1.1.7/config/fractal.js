@@ -36,7 +36,7 @@ web.set('static.path', path.join(__dirname, 'assets'));
 /*
  * Further components settings.
  */
-components.set('default.preview', '@demo1');
+// components.set('default.preview', '@fddemo');
 
 /*
  * Further web settings.

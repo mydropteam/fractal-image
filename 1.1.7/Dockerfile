@@ -1,9 +1,14 @@
 FROM node:8
 
-# Creation of the application directory
-RUN mkdir -p /opt/app/fractal
+# Creation of the project directories
+RUN mkdir -p /opt/project \
+&& mkdir -p /opt/project/components \
+&& mkdir -p /opt/project/docs \
+&& mkdir -p /opt/project/build \
+&& mkdir -p /opt/project/assets
 
-WORKDIR /opt/app/fractal
+# The project directory
+WORKDIR /opt/project
 
 # Installation of Fractal
 RUN npm install && npm cache clean --force \
@@ -11,17 +16,7 @@ RUN npm install && npm cache clean --force \
 && npm i -g @frctl/fractal \
 && npm i -g @frctl/twig
 
-ENV PATH /opt/apt/fractal/node_modules/.bin:$PATH
-
-# Expose 3000 for the node.js server, 3002 for the BrowserSync
-EXPOSE 3000 3002
-
-# Creation of the project directories
-RUN mkdir -p /opt/project \
-&& mkdir -p /opt/project/components \
-&& mkdir -p /opt/project/docs \
-&& mkdir -p /opt/project/build \
-&& mkdir -p /opt/project/assets
+ENV PATH /opt/project/fractal/node_modules/.bin:$PATH
 
 # the fractal.js file
 COPY config/fractal.js /opt/project/fractal.js
@@ -32,8 +27,8 @@ COPY config/package.json /opt/project/package.json
 # the component example files
 COPY config/example /opt/project/components/example
 
-# The project directory
-WORKDIR /opt/project
+# Expose 3000 for the node.js server, 3002 for the BrowserSync
+EXPOSE 3000 3002
 
 # The project volume
 VOLUME /opt/project
