@@ -14,7 +14,7 @@ WORKDIR /opt/project
 RUN npm install && npm cache clean --force \
 && npm install --save @frctl/fractal \
 && npm i -g @frctl/fractal \
-&& npm i -g @frctl/twig
+&& npm install --save @frctl/twig
 
 ENV PATH /opt/project/fractal/node_modules/.bin:$PATH
 
@@ -22,7 +22,7 @@ ENV PATH /opt/project/fractal/node_modules/.bin:$PATH
 COPY config/fractal.js /opt/project/fractal.js
 
 # the package.json file
-COPY config/package.json /opt/project/package.json
+# COPY config/package.json /opt/project/package.json
 
 # the component example files
 COPY config/example /opt/project/components/example
