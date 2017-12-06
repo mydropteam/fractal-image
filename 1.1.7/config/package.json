@@ -1,5 +1,5 @@
 {
-  "name": "FRACTAL DROPTEAM DEMO",
+  "name": "fractal-dropteam-demo",
   "version": "0.1.0",
   "dependencies": {
     "@frctl/fractal": "^1.1.7"
