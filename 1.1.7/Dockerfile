@@ -13,10 +13,6 @@ RUN npm install --global gulp-cli
 # the package.json file
 COPY config/package.json /opt/project/package.json
 
-# We set the node user as owner of the project module.
-WORKDIR /opt/
-RUN chown -R node:node ./project
-
 # The project directory
 WORKDIR /opt/project/
 
@@ -38,6 +34,9 @@ COPY config/fractal.js /opt/project/gulpfile.js
 
 # the component example files
 COPY config/example /opt/project/components/example
+
+# We set the node user as owner of the project module.
+RUN chown -R node:node /opt/project
 
 # Expose 3000 for the node.js server, 3002 for the BrowserSync
 EXPOSE 3000 3002
