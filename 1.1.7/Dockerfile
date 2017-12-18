@@ -13,6 +13,10 @@ RUN npm install --global gulp-cli
 # the package.json file
 COPY config/package.json /opt/project/package.json
 
+# We set the node user as owner of the project module.
+WORKDIR /opt/
+RUN chown -R node:node ./project
+
 # The project directory
 WORKDIR /opt/project/
 
