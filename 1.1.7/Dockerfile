@@ -2,8 +2,7 @@ FROM node:8
 
 # Installation of PHP and usefull extensions
 # Needed for the twig template engine
-RUN deb http://packages.dotdeb.org jessie all
-RUN deb-src http://packages.dotdeb.org jessie all
+RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list
 RUN wget https://www.dotdeb.org/dotdeb.gpg \
 && apt-key add dotdeb.gpg
 RUN apt-get update
