@@ -1,6 +1,30 @@
 FROM node:8
 
-# Creation of the project directories
+# Installation of PHP and usefull extensions
+# Needed for the twig template engine
+RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list
+RUN wget https://www.dotdeb.org/dotdeb.gpg \
+&& apt-key add dotdeb.gpg
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends php7.0-cli \
+php7.0-apcu \
+php7.0-mcrypt \
+php7.0-intl \
+php7.0-mysql \
+php7.0-curl \
+php7.0-gd \
+php7.0-soap \
+php7.0-xml \
+php7.0-zip
+
+# Installation of Composer
+RUN cd /usr/src && curl -sS http://getcomposer.org/installer | php
+RUN cd /usr/src && mv composer.phar /usr/bin/composer
+
+# Installation of Twig
+RUN composer require twig/twig:~2.0
+
+# Creation of the Fractal project directories
 RUN mkdir -p /opt/project \
 && mkdir -p /opt/project/components \
 && mkdir -p /opt/project/docs \
