@@ -6,9 +6,7 @@ RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/d
 RUN wget https://www.dotdeb.org/dotdeb.gpg \
 && apt-key add dotdeb.gpg
 RUN apt-get update
-RUN apt-get install apache2 \
-libapache2-mod-php7.0 \
-php7.0-cli \
+RUN apt-get install -y --no-install-recommends php7.0-cli \
 php7.0-apcu \
 php7.0-mcrypt \
 php7.0-intl \
@@ -17,8 +15,7 @@ php7.0-curl \
 php7.0-gd \
 php7.0-soap \
 php7.0-xml \
-php7.0-zip \
-&& a2enmod rewrite
+php7.0-zip
 
 # Installation of Composer
 RUN cd /usr/src && curl -sS http://getcomposer.org/installer | php
