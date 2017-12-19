@@ -2,7 +2,6 @@ FROM node:8
 
 # Installation of PHP and usefull extensions
 # Needed for the twig template engine
-RUN
 RUN apt-get install -y --no-install-recommends \
     php7 \
     php7-dev \
