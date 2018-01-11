@@ -37,9 +37,6 @@ COPY config/fractal.js /opt/project/gulpfile.js
 # the component example files
 COPY config/example /opt/project/components/example
 
-# We set the node user as owner of the project module.
-RUN chown -R root:node /opt/project
-
 # Expose 3000 for the node.js server, 3002 for the BrowserSync
 EXPOSE 3000 3002
 
