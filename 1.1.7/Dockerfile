@@ -32,10 +32,12 @@ RUN npm install --save @frctl/fractal \
 COPY config/fractal.js /opt/project/fractal.js
 
 # the gulpfile.js file
-COPY config/fractal.js /opt/project/gulpfile.js
+COPY config/gulpfile.js /opt/project/gulpfile.js
 
 # the component example files
 COPY config/example /opt/project/components/example
+
+-RUN chown -R node:node /opt/project
 
 # Expose 3000 for the node.js server, 3002 for the BrowserSync
 EXPOSE 3000 3002
